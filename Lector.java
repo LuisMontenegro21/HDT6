@@ -5,34 +5,36 @@
  */
 import java.io.BufferedReader;
 import java.nio.file.Files;
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.Map;
+import java.util.List;
+import java.util.LinkedList;
 
 
 public class Lector {
-    /** 
-    public void leerArchivoBuffer(Map<String,String> mapa) throws IOException{
+
+
+    /**
+     * Este método lee el archivo y retorna un arreglo de arreglos con los datos
+     * @throws IOException
+     */
+    public List<String[]> leerArchivoBuffer() throws IOException{
+        List<String[]> lista = new LinkedList<String[]>();
         Path path = Paths.get("cards_desc.txt");
         BufferedReader lector = Files.newBufferedReader(path);
-        String linea = lector.readLine();
-    }
-    */
-    public void leerArchivoScanner(Map<String,String> mapa)throws IOException{
-        try(final Scanner scanner = new Scanner(new File("cards_desc.txt"))){
-            scanner.useDelimiter("\n");
-            while(scanner.hasNext()){
-                final String carta = scanner.next(), tipo = scanner.next();
-                mapa.put(tipo,carta);
+        String linea = lector.readLine(); 
+        while(linea!=null){
+            String[] caracter = linea.split("|", 2);
+            if(caracter.length >=2){
+                String carta = caracter[0];
+                String tipo = caracter[1];
+                
             }
+            lista.add(caracter);
         }
-        catch (Exception e) {
-            System.out.println("El archivo no existe o surgió un problema imprevisto");
-            System.out.println(e.getCause());
-        }
-        
+        lector.close();
+        return lista;
     }
+    
 }

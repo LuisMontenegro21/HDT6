@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class GetMap<K, V> {
+public class GetMap<K, V> extends AbstractMap<K,V>{
 
     public Map<String, String> getMap(String tipo){
         if(tipo.equals("hashmap")||tipo.equals("1")){
@@ -24,6 +24,6 @@ public class GetMap<K, V> {
             return null;
         }
     }
-
+    
     
 }

@@ -6,6 +6,7 @@
 import java.util.Scanner;
 
 public class Vista {
+    
     private Scanner scan;
 
     public Vista(){
@@ -19,7 +20,10 @@ public class Vista {
     public void agregar(){
         System.out.println("Ingrese la carta que quiere agregar: ");
     }
-
+    /**
+     * para tomar el ingreso del usuario
+     * @return string
+     */
     public String input(){
         return scan.next();
     }

@@ -17,19 +17,22 @@ public class Controlador{
       vista = new Vista();
       vista.menu();
       input = vista.input().toLowerCase();
+
       if(input.equals("salir")||input.equals("4")){
         vista.finalziar();
         terminado = true;
+      } 
+      else{ 
+        try {
+          mapa.getMap(input);
+          lectorArchivo.leerArchivoBuffer();
+        } catch (IOException e) {
+          vista.ioExceptionError();
+          System.out.println(e.getCause());
+        }
       }
-      try {
-        lectorArchivo.leerArchivoScanner(mapa.getMap(input));
-      } catch (IOException e) {
-        vista.ioExceptionError();
-        System.out.println(e.getCause());
-      }
-      
-      
     }
+
 
 
   }
