@@ -1,8 +1,9 @@
 import java.io.IOException;
+import java.util.Map;
 
 /**
- * @author Luis Montenegro, Nikolas 
- * @since 10/03/22
+ * @author Luis Montenegro, Nikolas Gasdaglis
+ * @since 14/03/22
  * @version 1.0
  */
 public class Controlador{
@@ -11,11 +12,12 @@ public class Controlador{
     String input = null;
     Vista vista;
     GetMap<String, String> mapa = new GetMap<String, String>();
+    Map<String,String> map;
     Lector lectorArchivo = new Lector();
 
     while(!terminado){ 
       vista = new Vista();
-      vista.menu();
+      vista.menu(1);
       input = vista.input().toLowerCase();
 
       if(input.equals("salir")||input.equals("4")){
@@ -24,12 +26,28 @@ public class Controlador{
       } 
       else{ 
         try {
-          mapa.getMap(input);
-          lectorArchivo.leerArchivoBuffer();
-        } catch (IOException e) {
+          map = mapa.concatenar(mapa.getMap(input), lectorArchivo.leerArchivoBuffer());
+          terminado = true;
+        } 
+        catch (IOException e) {
           vista.ioExceptionError();
           System.out.println(e.getCause());
         }
+      }
+    }
+
+    terminado = false;
+
+    while(!terminado){
+      vista = new Vista();
+      vista.menu(2);
+      input = vista.input();
+      if(input.equals("7")||input.equals("salir")){
+        vista.finalziar();
+        terminado = true;
+      }
+      else{
+
       }
     }
 
