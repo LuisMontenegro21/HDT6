@@ -9,6 +9,16 @@ public interface MapInterface <K,V> {
 
     public abstract Map<String,String> addCard(Map<String, String> mapa, String carta);
 
+    public void showType(Map<String,String> mapa,String carta);
+
+    public void print(Map<String,String> mapa);
+
+    public void printInOrder(Map<String,String> mapa);
+
+
+
+
+
     
 
 }
