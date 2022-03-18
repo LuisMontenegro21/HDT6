@@ -28,6 +28,10 @@ public class Vista {
         System.out.println("Ingrese la carta que quiere agregar: ");
     }
 
+    public void errorInput(){
+        System.out.println("Ingrese una opción permitida");
+    }
+
     /**
      * para tomar el ingreso del usuario
      * @return string
